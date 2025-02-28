@@ -13,12 +13,6 @@ export class CountryService {
   constructor(private http: HttpClient) {
   }
 
-  /*
-    getAllCountries(): Observable<Country[]> {
-      return this.http.get<Country[]>(this.apiUrl);
-    }
-  */
-
   getAllCountries(): Observable<Country[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
       map((data: any[]) => {
