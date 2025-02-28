@@ -1,6 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {CountryService} from './services/country.service';
 import {CommonModule} from '@angular/common';
+import {Country} from './country.model';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +14,18 @@ import {CommonModule} from '@angular/common';
 export class AppComponent implements OnInit {
 
   private countryService = inject(CountryService);
-  countries: any[] = [];
+  countries: Country[] = [];
 
   ngOnInit(): void {
     this.countryService.getAllCountries().subscribe(
-      (data) => {
-        this.countries = data;
-        console.log(this.countries)
+      (value: Country[]) => {
+        this.countries = value;
+
+        console.log(this.countries[1])
       }
     );
+
+
   }
 
 }
