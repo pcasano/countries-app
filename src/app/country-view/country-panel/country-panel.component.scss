@@ -1,0 +1,6 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;  /* Allow the cards to wrap */
+  gap: 30px;  /* Gap of 30px horizontally and vertically */
+  // justify-content: space-between;  /* Optional: distribute cards evenly */
+}
