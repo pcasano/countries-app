@@ -1,7 +1,11 @@
 <div class="container">
 
+  <app-filter-area
+    (countryNameChange)="handleCountryNameChange($event)"
+  ></app-filter-area>
+
   <app-country-panel
-    [countries]="countries">
+    [countries]="filteredCountries">
   </app-country-panel>
 
 </div>
