@@ -16,9 +16,12 @@ import {FilterAreaComponent} from './filter-area/filter-area.component';
 export class AppComponent implements OnInit {
 
   private countryService = inject(CountryService);
+
   countries: Country[] = [];
   filteredCountries: Country[] = [];
+
   receivedCountryName: string = '';
+  receivedIsIndependent: boolean | null = null;
 
   ngOnInit(): void {
     this.countryService.getAllCountries().subscribe(
@@ -32,8 +35,20 @@ export class AppComponent implements OnInit {
 
   handleCountryNameChange(newName: string) {
     this.receivedCountryName = newName;
-    this.filteredCountries = this.countries.filter(country =>
-      country.name.common.toLowerCase().startsWith(this.receivedCountryName.toLowerCase())
-    );
+    this.filterCountries();
   }
+
+  handleIndependenceChange(isIndependent: boolean | null) {
+    this.receivedIsIndependent = isIndependent;
+    this.filterCountries();
+  }
+
+  filterCountries() {
+    this.filteredCountries = this.countries.filter(country => {
+      const nameMatches = country.name.common.toLowerCase().startsWith(this.receivedCountryName.toLowerCase());
+      const independenceMatches = this.receivedIsIndependent === null || country.independent === this.receivedIsIndependent;
+      return nameMatches && independenceMatches;
+    });
+  }
+
 }

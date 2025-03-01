@@ -17,22 +17,23 @@
     <div class="mb-3 col">
       <label for="continent" class="form-label">Select Continent(s)</label>
       <select id="continent" class="form-select" multiple size="7" (change)="onContinentChange($event)">
-        @for(continent of continents; track continent) {
+        @for (continent of continents; track continent) {
           <option [value]="continent">{{ continent }}</option>
         }
 
       </select>
     </div>
 
-    <!-- Independent Country Radio Buttons -->
     <div class="mb-3 col">
       <label class="form-label">Is this an independent country?</label>
       <div class="form-check">
-        <input type="radio" id="independentYes" class="form-check-input" [(ngModel)]="isIndependent" name="isIndependent" [value]="true">
+        <input type="radio" id="independentYes" class="form-check-input" [(ngModel)]="isIndependent"
+               (change)="onIndependentChange()" name="isIndependent" [value]="true">
         <label for="independentYes" class="form-check-label">Yes</label>
       </div>
       <div class="form-check">
-        <input type="radio" id="independentNo" class="form-check-input" [(ngModel)]="isIndependent" name="isIndependent" [value]="false">
+        <input type="radio" id="independentNo" class="form-check-input" [(ngModel)]="isIndependent"
+               (change)="onIndependentChange()" name="isIndependent" [value]="false">
         <label for="independentNo" class="form-check-label">No</label>
       </div>
     </div>

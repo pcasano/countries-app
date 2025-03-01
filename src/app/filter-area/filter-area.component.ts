@@ -13,6 +13,8 @@ export class FilterAreaComponent {
 
   @Output() countryNameChange = new EventEmitter<string>();
 
+  @Output() isIndependentChange = new EventEmitter<boolean | null>();
+
   countryName: string = '';
   selectedContinents: string[] = [];
   isIndependent: boolean | null = null;
@@ -26,5 +28,9 @@ export class FilterAreaComponent {
 
   onNameChange() {
     this.countryNameChange.emit(this.countryName);
+  }
+
+  onIndependentChange() {
+    this.isIndependentChange.emit(this.isIndependent);
   }
 }
