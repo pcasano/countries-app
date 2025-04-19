@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
   countries: Country[] = [];
   filteredCountries: Country[] = [];
+  continents: string[] = [];
 
   receivedCountryName: string = '';
   receivedIsIndependent: boolean | null = null;
@@ -38,6 +39,11 @@ export class AppComponent implements OnInit {
     this.filterCountries();
   }
 
+  handleContinentChange(selectedContinents: string[]) {
+    this.continents = selectedContinents;
+    this.filterCountries();
+  }
+
   handleIndependenceChange(isIndependent: boolean | null) {
     this.receivedIsIndependent = isIndependent;
     this.filterCountries();
@@ -47,7 +53,8 @@ export class AppComponent implements OnInit {
     this.filteredCountries = this.countries.filter(country => {
       const nameMatches = country.name.common.toLowerCase().startsWith(this.receivedCountryName.toLowerCase());
       const independenceMatches = this.receivedIsIndependent === null || country.independent === this.receivedIsIndependent;
-      return nameMatches && independenceMatches;
+      const continentMatches = this.continents.length === 0 || this.continents.includes(country.region);
+      return nameMatches && independenceMatches && continentMatches;
     });
   }
 

@@ -13,6 +13,8 @@ export class FilterAreaComponent {
 
   @Output() countryNameChange = new EventEmitter<string>();
 
+  @Output() selectedContinentsChange = new EventEmitter<string[]>();
+
   @Output() isIndependentChange = new EventEmitter<boolean | null>();
 
   countryName: string = '';
@@ -24,6 +26,7 @@ export class FilterAreaComponent {
   onContinentChange(event: Event) {
     const selectedOptions = (event.target as HTMLSelectElement).selectedOptions;
     this.selectedContinents = Array.from(selectedOptions).map(option => option.value);
+    this.selectedContinentsChange.emit(this.selectedContinents);
   }
 
   onNameChange() {
