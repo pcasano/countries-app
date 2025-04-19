@@ -6,8 +6,19 @@
     (selectedContinentsChange)="handleContinentChange($event)"
   ></app-filter-area>
 
-  <app-country-panel
-    [countries]="filteredCountries">
-  </app-country-panel>
+  <div class="row">
+    <app-country-panel [ngClass]="receivedSelectedCountry ? 'col-md-8' : 'col-md-12'"
+      [countries]="filteredCountries"
+      (selectedCountryChange)="handleCountrySelection($event)">
+    </app-country-panel>
+
+    @if (receivedSelectedCountry) {
+      <app-country-details class="col-md-4"
+        [country]="receivedSelectedCountry"
+        (closeDetails)="handleCloseDetails()"
+      >
+      </app-country-details>
+    }
+  </div>
 
 </div>

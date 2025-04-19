@@ -1,0 +1,24 @@
+<div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>{{ country().name.common }}</h1>
+      <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+    </div>
+
+    <p><strong>Official Name:</strong> {{ country().name.official }}</p>
+    <p><strong>Independent:</strong> {{ country().independent ? 'Yes' : 'No' }}</p>
+    <p><strong>Capital:</strong> {{ country().capital.join(', ') }}</p>
+    <p><strong>Region:</strong> {{ country().region }}</p>
+    <p><strong>Subregion:</strong> {{ country().subregion }}</p>
+    <p><strong>Population:</strong> {{ country().population | number }}</p>
+      <p><strong>Languages:</strong> {{ getLanguageList() }}</p>
+      <p><strong>Currencies:</strong> {{ getCurrencyList() }}</p>
+    <div>
+      <strong>Flag:</strong><br />
+      <img [src]="country().flags.png" [alt]="country().flags.alt" width="200" />
+      <p><em>{{ country().flags.alt }}</em></p>
+    </div>
+    <div>
+      <strong>Coat of Arms:</strong><br />
+      <img [src]="country().coatOfArms.png" alt="Coat of Arms" width="200" />
+    </div>
+</div>

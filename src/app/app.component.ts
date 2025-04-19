@@ -4,11 +4,12 @@ import {CommonModule} from '@angular/common';
 import {Country} from './country-view/country.model';
 import {CountryPanelComponent} from './country-view/country-panel/country-panel.component';
 import {FilterAreaComponent} from './filter-area/filter-area.component';
+import {CountryDetailsComponent} from './country-details/country-details.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, CountryPanelComponent, FilterAreaComponent],
+  imports: [CommonModule, CountryPanelComponent, FilterAreaComponent, CountryDetailsComponent],
   providers: [CountryService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
 
   receivedCountryName: string = '';
   receivedIsIndependent: boolean | null = null;
+  receivedSelectedCountry: Country | null = null;
 
   ngOnInit(): void {
     this.countryService.getAllCountries().subscribe(
@@ -58,4 +60,11 @@ export class AppComponent implements OnInit {
     });
   }
 
+  handleCountrySelection(selectedCountry: Country) {
+    this.receivedSelectedCountry = selectedCountry;
+  }
+
+  handleCloseDetails() {
+    this.receivedSelectedCountry = null;
+  }
 }

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CountryCardComponent} from '../country-card/country-card.component';
 import {Country} from '../country.model';
 
@@ -14,5 +14,12 @@ export class CountryPanelComponent {
 
   @Input() countries!: Country[];
 
+  @Output() selectedCountryChange = new EventEmitter<Country>();
 
+  selectedCountry: Country | null = null;
+
+  onCardClick(country: Country) {
+    this.selectedCountry = country;
+    this.selectedCountryChange.emit(country);
+  }
 }

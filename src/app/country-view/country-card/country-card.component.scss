@@ -1,13 +1,17 @@
 .custom-card {
-  width: 200px;  /* Fixed width of 120px */
-  height: 200px; /* Fixed height of 120px */
-  border: 1px solid #ddd;  /* Light border */
-  border-radius: 1.5rem;  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Stronger shadow */
-  background-color: #fff;  /* White background */
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ddd;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 
-  padding: 10px;  /* Optional padding */
+  padding: 10px;
 }
 
-
+.custom-card:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  cursor: pointer;
+}
 

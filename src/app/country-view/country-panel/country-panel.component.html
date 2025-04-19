@@ -1,10 +1,9 @@
 <div class="card-container">
-
-  @for (country of countries; track country.name) {
-    <app-country-card
-      [country]="country"
-    ></app-country-card>
-  }
-
+    @for (country of countries; track country.name) {
+      <app-country-card
+        (click)="onCardClick(country)"
+        [country]="country"
+      ></app-country-card>
+    }
 </div>
 
