@@ -67,4 +67,20 @@ export class AppComponent implements OnInit {
   handleCloseDetails() {
     this.receivedSelectedCountry = null;
   }
+
+  handleSortByNameAscendant(isSortedAlphabeticallyAscendant: boolean) {
+    if(isSortedAlphabeticallyAscendant) {
+      this.filteredCountries.sort((a, b) => a.name.common.localeCompare(b.name.common, undefined, {sensitivity: 'base'}));
+    } else {
+      this.filteredCountries.sort((a, b) => b.name.common.localeCompare(a.name.common, undefined, {sensitivity: 'base'}));
+    }
+  }
+
+  handleSortByPopulationAscendant(isSortedPopulationAscendant: boolean) {
+    if(isSortedPopulationAscendant) {
+      this.filteredCountries.sort((a, b) => a.population - b.population);
+    } else {
+      this.filteredCountries.sort((a, b) => b.population - a.population);
+    }
+  }
 }

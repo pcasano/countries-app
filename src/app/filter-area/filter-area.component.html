@@ -39,4 +39,28 @@
     </div>
   </div>
 
+  <div class="row">
+
+    @if(isSortedAlphabeticallyButtonVisible) {
+      <button type="button" class="btn btn-outline-secondary col-1 me-1" (click)="onSortByNameAscendant()">
+        <i class="bi bi-sort-alpha-down"></i>
+      </button>
+    } @else {
+      <button type="button" class="btn btn-outline-secondary col-1 me-1" (click)="onSortByNameDescendant()">
+        <i class="bi bi-sort-alpha-down-alt"></i>
+      </button>
+    }
+
+    @if(isSortedPopulationButtonVisible) {
+      <button type="button" class="btn btn-outline-secondary col-1 me-1" (click)="onSortByPopulationAscendant()">
+        <i class="bi bi-sort-numeric-down"></i>
+      </button>
+    } @else {
+      <button type="button" class="btn btn-outline-secondary col-1 me-1" (click)="onSortByPopulationDescendant()">
+        <i class="bi bi-sort-numeric-down-alt"></i>
+      </button>
+    }
+
+  </div>
+
 </div>

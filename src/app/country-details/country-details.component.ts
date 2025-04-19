@@ -21,7 +21,6 @@ export class CountryDetailsComponent {
   }
 
   getLanguageList() {
-    console.log(this.country().languages);
     return Object.values(this.country().languages);
   }
 

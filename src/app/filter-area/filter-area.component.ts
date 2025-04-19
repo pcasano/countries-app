@@ -17,9 +17,15 @@ export class FilterAreaComponent {
 
   @Output() isIndependentChange = new EventEmitter<boolean | null>();
 
+  @Output() isSortedAlphabeticallyAscendant = new EventEmitter<boolean>();
+
+  @Output() isSortedPopulationAscendant = new EventEmitter<boolean>();
+
   countryName: string = '';
   selectedContinents: string[] = [];
   isIndependent: boolean | null = null;
+  isSortedAlphabeticallyButtonVisible: boolean = true;
+  isSortedPopulationButtonVisible: boolean = true;
 
   continents = ['Africa', 'Asia', 'Europe', 'North America', 'South America', 'Oceania', 'Antarctica'];
 
@@ -35,5 +41,25 @@ export class FilterAreaComponent {
 
   onIndependentChange() {
     this.isIndependentChange.emit(this.isIndependent);
+  }
+
+  onSortByNameAscendant() {
+    this.isSortedAlphabeticallyButtonVisible = false;
+    this.isSortedAlphabeticallyAscendant.emit(true)
+  }
+
+  onSortByNameDescendant() {
+    this.isSortedAlphabeticallyButtonVisible = true;
+    this.isSortedAlphabeticallyAscendant.emit(false)
+  }
+
+  onSortByPopulationAscendant() {
+    this.isSortedPopulationButtonVisible = false;
+    this.isSortedPopulationAscendant.emit(true)
+  }
+
+  onSortByPopulationDescendant() {
+    this.isSortedPopulationButtonVisible = true;
+    this.isSortedPopulationAscendant.emit(false)
   }
 }
