@@ -1,9 +1,9 @@
 <div class="panel-border p-5">
-    <div class="d-flex justify-content-between align-items-center">
-      <h1>{{ country().name.common }}</h1>
+
+    <div class="text-end">
       <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
     </div>
-
+    <h1>{{ country().name.common }}</h1>
     <p><strong>Official Name:</strong> {{ country().name.official }}</p>
     <p><strong>Independent:</strong> {{ country().independent ? 'Yes' : 'No' }}</p>
     <p><strong>Capital:</strong> {{ country().capital.join(', ') }}</p>
